@@ -57,7 +57,5 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-*/ios/Pods/
-/.idea/
-/.idea/
+What/ios/Pods
 /.idea/
