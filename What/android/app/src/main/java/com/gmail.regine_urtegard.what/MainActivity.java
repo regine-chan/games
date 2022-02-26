@@ -1,4 +1,4 @@
-package com.what;
+package com.gmail.regine_urtegard.what;
 
 import com.facebook.react.ReactActivity;
 import android.os.Bundle;

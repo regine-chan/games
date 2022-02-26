@@ -1,4 +1,4 @@
-package com.what;
+package com.gmail.regine_urtegard.what;
 
 import android.app.Application;
 import android.content.Context;
