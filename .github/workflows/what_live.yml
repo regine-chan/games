@@ -12,7 +12,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     defaults:
-      working-directory: What
+      run:
+        working-directory: What
     steps:
       - name: Checkout
         uses: actions/checkout@v2
