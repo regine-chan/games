@@ -20,5 +20,5 @@ jobs:
       - name: Generate stores
         working-directory: What/android/app
         run: | 
-        keytool -keypass my-pass -storepass mypass -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 -noprompt
-        ls -A
+          keytool -keypass my-pass -storepass mypass -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 -noprompt
+          ls -A
