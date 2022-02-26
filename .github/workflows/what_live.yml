@@ -9,16 +9,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Set up JDK 16
-        uses: actions/setup-java@v1
-        with:
-          java-version: 16
-      - name: Generate stores
-        working-directory: What/android/app
-        run: | 
-          keytool -keypass my-pass -storepass mypass -genkey -v -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 -noprompt
-          ls -A
+      - name: Checkout
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+      - uses: c-hive/gha-npm-cache@v1
+      - name: Install node modules
+        run: |
+          npm install
+      - name: Run test
+        run: |
+          npm run test
+
+      
