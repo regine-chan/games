@@ -79,6 +79,6 @@ jobs:
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
-          packageName: com.what
+          packageName: com.regine_urtegard.what
           releaseFiles: ${{steps.sign_app.outputs.signedReleaseFile}}
           track: beta
