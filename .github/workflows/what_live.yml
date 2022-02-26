@@ -60,7 +60,7 @@ jobs:
         run: cd android && chmod +x ./gradlew
       - name: Build Android App Bundle
         run: |
-          cd android && ./gradlew bundleRelease --no-daemon
+          cd android && ./gradlew assembleRelease --no-daemon
       - name: Sign App Bundle
         id: sign_app
         uses: r0adkll/sign-android-release@v1
@@ -70,4 +70,17 @@ jobs:
           alias: ${{ secrets.ANDROID_SIGNING_ALIAS }}
           keyStorePassword: ${{ secrets.ANDROID_SIGNING_STORE_PASSWORD }}
           keyPassword: ${{ secrets.ANDROID_SIGNING_KEY_PASSWORD }}
-      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Signed App Bundle
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - name: Deploy to Play Store (BETA)
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
+          packageName: com.testedapp
+          releaseFile: a${{steps.sign_app.outputs.signedReleaseFile}}
+          track: beta
+          inAppUpdatePriority: 3
+          userFraction: 0.5
